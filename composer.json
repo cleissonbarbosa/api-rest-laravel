@@ -41,7 +41,7 @@
             "@php artisan jwt:secret -f",
             "docker-compose build api",
             "docker-compose up -d",
-            "@php -r 'sleep(3);'",
+            "@php -r \"sleep(3);\"",
             "docker exec liberfly-api-test php artisan migrate:fresh --seed",
             "echo 'it's Working! 🎉 go to http://localhost:8000 to test'"
         ],
