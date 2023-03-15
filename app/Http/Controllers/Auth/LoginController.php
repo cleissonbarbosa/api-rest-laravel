@@ -3,9 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use Illuminate\Validation\ValidationException;
+use App\Http\Resources\User as UserResource;
 
 class LoginController extends Controller
 {
@@ -38,9 +37,14 @@ class LoginController extends Controller
     }
 
     /**
-    * Get a JWT via given credentials.
-    *
-    * @return \Illuminate\Http\JsonResponse
+     * @OA\Get(
+     *     tags={"auth/login"},
+     *     summary="Returns user token info if success",
+     *     description="Returns token of user if sing in successfully",
+     *     path="/api/auth/login",
+     *     @OA\Response(response="200", description="A User token"),
+     * ),
+     * 
     */
     public function login()
     {
@@ -51,6 +55,20 @@ class LoginController extends Controller
         }
 
         return $this->respondWithToken( $token );
+    }
+
+    /**
+     * @OA\Get(
+     *     tags={"auth/me"},
+     *     summary="Returns user info if is logged",
+     *     description="Returns user info if is logged in",
+     *     path="/api/auth/me",
+     *     @OA\Response(response="200", description="A user info"),
+     * ),
+     * 
+    */
+    public function me( Request $request ) {
+        return new UserResource( $request->user() );
     }
         
     /**

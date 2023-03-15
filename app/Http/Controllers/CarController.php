@@ -19,10 +19,15 @@ class CarController extends Controller
     }
 
     /**
-     * list all items
-     *
-     * @return string
-     */
+     * @OA\Get(
+     *     tags={"cars"},
+     *     summary="Returns a list of cars",
+     *     description="Returns a object of cars",
+     *     path="/api/cars",
+     *     @OA\Response(response="200", description="A list with cars"),
+     * ),
+     * 
+    */
     public function listAll() {
         if( ! $response = Car::all() ) {
             return response()->json([
@@ -35,11 +40,15 @@ class CarController extends Controller
     }
 
     /**
-     * get item by id
-     *
-     * @param  string $id
-     * @return string
-     */
+     * @OA\Get(
+     *     tags={"cars/{uuid}"},
+     *     summary="Returns a car by id",
+     *     description="Returns a car by id",
+     *     path="/api/cars/{uuid}",
+     *     @OA\Response(response="200", description="A single car object"),
+     * ),
+     * 
+    */
     public function get( string $id ) {
         if( ! $response = Car::find( $id ) ) {
             return response()->json([

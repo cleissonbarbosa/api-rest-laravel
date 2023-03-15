@@ -1,0 +1,69 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Liberfly API Test",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/auth/login": {
+            "get": {
+                "tags": [
+                    "auth/login"
+                ],
+                "summary": "Returns user token info if success",
+                "description": "Returns token of user if sing in successfully",
+                "operationId": "0b67708f51b815c164f12cc8434ed13a",
+                "responses": {
+                    "200": {
+                        "description": "A User token"
+                    }
+                }
+            }
+        },
+        "/api/auth/me": {
+            "get": {
+                "tags": [
+                    "auth/me"
+                ],
+                "summary": "Returns user info if is logged",
+                "description": "Returns user info if is logged in",
+                "operationId": "b0ad4aa2bbe6ffb9846249517a13c4b6",
+                "responses": {
+                    "200": {
+                        "description": "A user info"
+                    }
+                }
+            }
+        },
+        "/api/cars": {
+            "get": {
+                "tags": [
+                    "cars"
+                ],
+                "summary": "Returns a list of cars",
+                "description": "Returns a object of cars",
+                "operationId": "041f246ab58d82e1d71b1063713d5b82",
+                "responses": {
+                    "200": {
+                        "description": "A list with cars"
+                    }
+                }
+            }
+        },
+        "/api/cars/{uuid}": {
+            "get": {
+                "tags": [
+                    "cars/{uuid}"
+                ],
+                "summary": "Returns a car by id",
+                "description": "Returns a car by id",
+                "operationId": "99aa6a64618af4a81550a2947c106e50",
+                "responses": {
+                    "200": {
+                        "description": "A single car object"
+                    }
+                }
+            }
+        }
+    }
+}

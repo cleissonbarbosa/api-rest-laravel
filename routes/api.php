@@ -4,7 +4,6 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CarController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Resources\User as UserResource;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,9 +24,7 @@ Route::get('/', function () {
 });
 
 Route::group(['middleware' => 'auth:api'], function () {
-    Route::get('auth/me', function (Request $request) {
-        return new UserResource($request->user());
-    });
+    Route::get('auth/me', [LoginController::class,'me']);
 
     Route::get('cars', [CarController::class, 'listAll']);
     Route::get('cars/{id}', [CarController::class, 'get']);
