@@ -14,7 +14,9 @@ You will find in the folder [postman](postman) the exported file of the collecti
 
 ## How to install and run
 
-- First install composer dependencies
+Rename the file [.env.example](.env.example) to ```.env``` and enter the database information. **Do not change the host**!
+
+- Then install the composer dependencies
 ```bash
 $ composer i
 ```
